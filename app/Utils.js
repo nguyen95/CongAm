@@ -37,3 +37,12 @@ export const objToQueryString = (obj) => {
     }
     return keyValuePairs.join('&');
 }
+
+export var domainApp = {
+    domain1: "http://210.211.96.141:3000",
+    domain2: "https://curvo.serveo.net",
+}
+
+export const changeDomain = (val) => {
+    domainApp.domain1 = val
+}

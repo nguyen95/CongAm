@@ -9,6 +9,7 @@ import { Icon, Button } from 'native-base';
 import { inject, observer } from 'mobx-react';
 import { themes } from '../themes';
 import { styles } from '../style/home.style';
+import { domainApp } from '../Utils';
 
 @inject('mainStore')
 @observer
@@ -21,16 +22,20 @@ export default class HistoryDetail extends Component {
     componentWillMount() {
         const { mainStore, navigation } = this.props
         let id = navigation.state.params.id;
+        this.mainStore = mainStore;
         mainStore.getQuestionDetail(id)
     }
 
     renderItem = (item, index) => {
         return <View>
             <TouchableOpacity
-                contentContainerStyle={styles.title_detail}
-                onPress={() => mainStore.toggleCollapseDetail(index)}
+                onPress={() => this.mainStore.toggleCollapseDetail(index)}
             >
-                <Text >Tư vấn dược gửi: {item.created_at.split(".")[0]}</Text>
+                <View
+                    style={styles.title_detail}
+                >
+                    <Text >Tư vấn dược gửi: {item.created_at.split(".")[0]}</Text>
+                </View>
             </TouchableOpacity>
             <Collapsible collapsed={item.collSlapse}>
                 <View style={{ width: themes.fullWidth - 32, padding: 16 }}>
@@ -85,7 +90,7 @@ export default class HistoryDetail extends Component {
                             renderItem={({ item }) => <FastImage
                                 style={styles.image}
                                 source={{
-                                    uri: "http://210.211.96.141:3000" + item.link_path
+                                    uri: domainApp.domain1 + item.link_path
                                 }}
                                 resizeMode='cover'
                             />}

@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import { domainApp } from './Utils';
 
 let access_token = null;
 let expiry = null;
@@ -45,10 +46,7 @@ async function call(url_request, params, method) {
             });
         }
 
-
-
-        // let domain = "https://curvo.serveo.net"
-        let domain = "http://210.211.96.141:3000"
+        let domain = domainApp.domain1;
 
         let response = method == "POST"
             ? url_request == "/auth/sign_in/"

@@ -25,7 +25,7 @@ export default class LoadingView extends Component {
           onPressOut={this.props.onPressOut}
         >
           <TouchableWithoutFeedback>
-            <Spinner isVisible={true} size={100} type={'ChasingDots'} color={themes.colorApp}/>
+            <Spinner isVisible={true} size={60} type={'ChasingDots'} color={themes.colorApp}/>
           </TouchableWithoutFeedback>
         </TouchableOpacity>
       </Modal>
